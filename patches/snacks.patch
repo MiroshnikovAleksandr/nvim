@@ -1,0 +1,22 @@
+diff --git a/lua/snacks/picker/util/init.lua b/lua/snacks/picker/util/init.lua
+index 81e4e1f..efea6ab 100644
+--- a/lua/snacks/picker/util/init.lua
++++ b/lua/snacks/picker/util/init.lua
+@@ -76,7 +76,7 @@ end
+ ---@param prompt string
+ ---@param fn fun()
+ function M.confirm(prompt, fn)
+-  Snacks.picker.select({ "No", "Yes" }, {
++  Snacks.picker.select({ "Yes", "No" }, {
+     prompt = prompt,
+     snacks = {
+       layout = {
+@@ -86,7 +86,7 @@ function M.confirm(prompt, fn)
+       },
+     },
+   }, function(_, idx)
+-    if idx == 2 then
++    if idx == 1 then
+       fn()
+     end
+   end)
