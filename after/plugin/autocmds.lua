@@ -33,9 +33,13 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- show cursorline only in active window
 vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
-	group = vim.api.nvim_create_augroup("active_cursorline", { clear = true }),
-	callback = function()
-		-- keep it off in netrw (tree listings repaint the whole window else)
-		vim.opt_local.cursorline = vim.bo.filetype ~= "netrw"
-	end,
+  callback = function()
+    vim.opt.cursorline = true
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
+  callback = function()
+    vim.opt.cursorline = false
+  end,
 })
